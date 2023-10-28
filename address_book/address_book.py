@@ -21,14 +21,9 @@ class Name(Field):
 class Phone(Field):
     # - A class for storing a phone number. Has format validation (10 digits).
     def __init__(self, phone):
-        super().__init__(phone)
-
-    def validate(self):
-        # - validation
-        if len(self.value) == 10 and self.value.isdigit():
-            return True
-        else:
+        if not (len(self.value) == 10 and self.value.isdigit()):
             raise ValueError("The phone number must consist of 10 digits")
+        super().__init__(phone)
 
 
 class Record:
